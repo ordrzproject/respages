@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Administration Area Responsive Pages </title>
+		<script type="text/javascript" src="js/functions.js"></script>
+		<script src="js/jquery.min.js"></script> 
+		<link rel="stylesheet" href="css/style.css">
+		<script type="text/javascript">
+		var statusBtnFlag = false; 
+		$(document).ready( function(){
+			// alert("test");
+			init();
+
+
+			$("#btn-view-pages").on("click", function(){postGet.getAllPages()});
+			$("#btn-create-page").on("click", function(){interface.createPage()});
+			$("#close-create-page").on("click", function(){interface.closeCreatePage()});
+		  	$("#submit-create-page").on("click", function(){postGet.createPage( 
+		  		{
+			  		title 		: $("#create-page-title").val(),
+					description : $("#create-page-description").val(),
+					type 		: $("#create-page-type").val(),
+					isActive	: statusBtnFlag
+				}
+	  		)});
+		  	$(".head-drop-down").on("click", function(){interface.showTypeList()})
+		  	$(".drop-down-type li").on("click", function(){interface.selectTypeList($(this))})
+
+			  // postGet.getSelectedPage("478");
+			    // postGet.createPage();
+
+		// $("#create-page-title").val(),
+		// $("#create-page-description").val(),
+		// $("#create-page-type").val(),
+		// $("#create-page-status").val()
+
+
+				$( ".anim-button" ).click(function() {
+					if(statusBtnFlag === false){
+						$( "#circle-btn" ).animate({
+							left: "+=50",
+							}, 1000, function() {
+							// Animation complete.
+						});
+						$(".on-button").animate({
+							left: "+=100",
+							}, 1000, function() {
+						});
+						$(".off-button").animate({
+							left: "+=100",
+							}, 1000, function() {
+						});
+						statusBtnFlag = true;
+					}
+					else{
+						$( "#circle-btn" ).animate({
+							left: "-=50",
+							}, 1000, function() {
+							// Animation complete.
+						});
+						$(".on-button").animate({
+							left: "-=100",
+							}, 1000, function() {
+							// Animation complete.
+						});
+						$(".off-button").animate({
+							left: "-=100",
+							}, 1000, function() {
+						});
+						statusBtnFlag = false;
+					}
+				});
+
+			// $(".drop-down-type").bind("click", function(){
+			// 	alert("--"+$(".drop-down-type").text()); })
+
+
+
+
+
+
+		})
+
+		</script>
+	</head>
+	<body>
+		<div id="white-screen" class="none">
+			<img src="img/loader.gif" alt="loader" />
+		</div>
+		<div class="header">
+			<div class="nav">
+				<img class="logo" src="img/logo.png" alt="logo"/>
+				<ul class="nav-buttons noselect hand">
+					<li id="btn-view-pages">
+						<a>View All Pages</a>
+					</li>
+					<li id="btn-create-page">
+						<a>Create Page</a>
+					</li>
+				</ul>
+				<div class="right user">
+					<p class="left uname">Jimis</p>
+					<img class="left" src="img/user.png" alt="user"/>
+					<img class="left" src="img/d_arrow.png" alt="d_arrow"/>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		 <div class="clear"></div>
+		<div class="content">
+			<div class="pages">
+				  
+				<!-- <div class="left micro-page">
+					<div class="transparency-layer">
+						<div class="view-page-msg hand">
+							<p>View</p>
+						</div>
+						<div>
+						 	<p class="left">Title</p>
+						 	<div class="right info-padding-width">Titleas dfTitleasdfTitleasdfT itleasdf</div>
+						</div>
+						<div class="clear"></div>
+						<div>
+						 	<p class="left">Desc</p>
+						 	<div class="right info-padding-width" >asdfasdf asdf asdfasdfasdf aszxcvzxc vzxcv qwefasdfasdf aszxcvzxc vzxcv qwerdfvqwefvsdfv grfbrthjn</div>
+						</div>
+						<div class="clear"></div>
+						<div>
+						 	<p class="left">Type</p>
+						 	<div class="right info-padding-width">Type 0</div>
+						</div>
+						<div class="clear"></div>
+					 	<div>
+						 	<p class="left">Status</p>
+						 	<div class="right info-padding-width">Public</div>
+						</div>
+						<div class="clear"></div>
+						<div>
+						 	<p class="left published">PublishedOn</p>
+						 	<div class="right info-padding-width">to day 30/15/2013</div>
+						</div>
+						<div class="clear"></div>
+						</div>
+					 	<div class="mod-buttons">
+							<div class="left edit-page hand">Edit page</div>
+							<div class="left delete-page hand">Delete page</div>
+						</div>
+					
+				</div> -->
+				
+
+			 <!-- 	<div class="left micro-page">
+			 		<div class="view-page-msg hand">
+			 			<p>View</p>
+			 		</div>
+					<div>
+					 	<p class="left">Title</p>
+					 	<div class="right info-padding-width">Titleas dfTitleasdfTitleasdfT itleasdf</div>
+					</div>
+					<div class="clear"></div>
+					<div>
+					 	<p class="left">Desc</p>
+					 	<div class="right info-padding-width" >asdfasdf asdf asdfasdfasdf aszxcvzxc vzxcv qwefasdfasdf aszxcvzxc vzxcv qwerdfvqwefvsdfv grfbrthjn</div>
+					</div>
+					<div class="clear"></div>
+					<div>
+					 	<p class="left">Type</p>
+					 	<div class="right info-padding-width">Type 0</div>
+					</div>
+					<div class="clear"></div>
+				 	<div>
+					 	<p class="left">Status</p>
+					 	<div class="right info-padding-width">Public</div>
+					 </div>
+					 <div class="clear"></div>
+					  <div>
+					 	<p class="left published">PublishedOn</p>
+					 	<div class="right info-padding-width">to day 30/15/2013</div>
+					 </div>
+					 <div class="clear"></div>
+				</div>
+				<div class="clear mod-buttons">
+					<div class="left edit-page noselect hand">Edit page</div>
+					<div class="left delete-page noselect hand">Delete page</div>
+				</div> 
+				<div class="clear"></div> -->
+			</div>
+
+
+
+			<div class="none view-selected-page">
+				<div class="left page">
+					<div>
+					 	<p class="left">Title</p>
+					 	<div class="right info-padding-width">TitleasdfTitleasdfTitleasdfTitleasdf</div>
+					</div>
+					<div class="clear"></div>
+					<div>
+					 	<p class="left">Desc</p>
+					 	<div class="right info-padding-width" >asdfasdf asdf asdfasdfasdf aszxcvzxc vzxcv qwefasdfasdf aszxcvzxc vzxcv qwerdfvqwefvsdfv grfbrthjn</div>
+					</div>
+					<div class="clear"></div>
+					<div>
+					 	<p class="left">Type</p>
+					 	<div class="right info-padding-width">Type 0</div>
+					</div>
+					<div class="clear"></div>
+				 	<div>
+					 	<p class="left">Status</p>
+					 	<div class="right info-padding-width">Public</div>
+					 </div>
+					 <div class="clear"></div>
+					  <div>
+					 	<p class="left published">PublishedOn</p>
+					 	<div class="right info-padding-width">to day 30/15/2013</div>
+					 </div>
+					 <div class="clear"></div>
+				</div>
+			 	<div class="clear"></div>
+			</div>
+	
+
+
+
+
+			<div class="clear"></div>
+			
+		</div>
+		<div class="dialogs-cont">
+			<div class="none create-page">
+				<div class="create-page-cont">
+					<h3>Create Page</h3>
+					<form id="create-page-form" action=""  method="post">
+						<p>Title</p>
+						<input  type="text" id="create-page-title" name="title">
+						<p>Description</p>
+						<textarea id="create-page-description"rows="4" cols="30"></textarea>
+						<p>Type</p>
+						<!-- <input type="text" id="create-page-type" name="type"> -->
+						<div class="head-drop-down">
+							<p id="selected-type-item" class="left">Selecte page type</p>
+							<div class="d-arrow"></div>
+						</div>
+						<ul class="none drop-down-type">
+							<!-- <li data-val="-1">Selecte page type</li> -->
+							<li data-val="0">Menu</li>
+							<li data-val="1">Events</li>
+							<li data-val="2">Content</li>
+						</ul>
+
+
+
+						<!-- isActive? -->
+						<!-- <input type="text" id="create-page-status" name="title"> -->
+						<div class="status_cont">
+							<p class>Status</p> 
+							<div class="anim-button">
+								<div class="on-button">
+									<p class="left">On</p>
+								</div>
+								<div id="circle-btn" class="left circle"></div>
+								<div class="off-button">
+									<p class="left">Off</p>
+								</div>
+							</div>
+						</div>			
+						<div class="clear"></div>
+						<!-- <p>PublishedOn</p>
+						<input type="text" name="title"> -->
+						<div class="right btn-cont">
+							<input id="submit-create-page" type="button" name="submit" value="Submit">
+							<input id="close-create-page" type="button" name="close" value="Close">
+							<!-- <div class="submit-btn"> -->
+						</div>
+						<div class="clear"></div>
+					</form>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="none" id="delete-dialog">
+				<p class="del-msg"></p>
+				<div class="del-dialog-buttons">
+					<input id="delete-page" class="delete-page" type="button" name="delete" value="Delete">
+					<input id="cancel-del-dialog" type="button" name="cancel" value="Cancel">
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</body>
+		<!-- <div class="footer"></div>			 -->
+</html>
