@@ -1,7 +1,7 @@
 body{
 	margin: 0;
  	padding: 0;
- 	background-color: #aaa;
+ 	background-color: #ffecec;
  	font-family: arial, Geneva, sans-serif;
  	min-width: 600px;
  }
@@ -30,6 +30,7 @@ a{
     -ms-user-select: none;
     user-select: none;
 }
+.red-border{border: 1px solid #f00 !important;}
 .clear{clear: both;}
 .left{float: left;}
 .right{float: right;}
@@ -69,8 +70,8 @@ a{
     padding: 20px;
 }
 .micro-page{
-	background: none repeat scroll 0 0 #ccc;
-    border-radius: 10px;
+	background: none repeat scroll 0 0 #fff;
+    border-radius: 3px;
     padding-left: 20px;
     margin-top: 10px;
     margin-left: 10px;
@@ -84,7 +85,7 @@ a{
 .micro-page > div {
 	margin-top: 10px;
 }
-.edit-page {background-color: #42753a; }
+.edit-page {background-color: #669922; } /*3299CC*/
 .edit-page , .delete-page{
  	border-radius: 3px;
     color: #ddd;
@@ -96,7 +97,7 @@ a{
     width: 90px;
 }
 .delete-page{
-	background-color: #ad2525 ;
+	background-color: #CD3319 ;
 	width: 100px !important;
 	margin-left: 15px;
 }
@@ -273,6 +274,7 @@ a{
 }
 #delete-dialog{
 	background-color:#ccc; 
+	border-radius: 3px;
 	width: 340px;
 	height: 160px;
 	margin-left: -170px;

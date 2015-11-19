@@ -6,34 +6,24 @@
 		<script src="js/jquery.min.js"></script> 
 		<link rel="stylesheet" href="css/style.css">
 		<script type="text/javascript">
-		var statusBtnFlag = false; 
-		$(document).ready( function(){
-			// alert("test");
-			init();
-
-
-			$("#btn-view-pages").on("click", function(){postGet.getAllPages()});
-			$("#btn-create-page").on("click", function(){interface.createPage()});
-			$("#close-create-page").on("click", function(){interface.closeCreatePage()});
-		  	$("#submit-create-page").on("click", function(){postGet.createPage( 
-		  		{
-			  		title 		: $("#create-page-title").val(),
-					description : $("#create-page-description").val(),
-					type 		: $("#create-page-type").val(),
-					isActive	: statusBtnFlag
-				}
-	  		)});
-		  	$(".head-drop-down").on("click", function(){interface.showTypeList()})
-		  	$(".drop-down-type li").on("click", function(){interface.selectTypeList($(this))})
-
-			  // postGet.getSelectedPage("478");
-			    // postGet.createPage();
-
-		// $("#create-page-title").val(),
-		// $("#create-page-description").val(),
-		// $("#create-page-type").val(),
-		// $("#create-page-status").val()
-
+			var statusBtnFlag = false; 
+			$(document).ready( function(){
+				init();
+				$("#btn-view-pages").on("click", function(){postGet.getAllPages()});
+				$("#btn-create-page").on("click", function(){interface.createPage()});
+				$("#close-create-page").on("click", function(){interface.closeCreatePage()});
+			  	$("#submit-create-page").on("click", function(){postGet.createPage( 
+			  		{
+				  		title 		: $("#create-page-title").val(),
+						description : $("#create-page-description").val(),
+						type 		: $("#selected-type-item").attr("data-tid"),
+						isActive	: statusBtnFlag
+					}
+		  		)});
+			  	$(".head-drop-down").on("click", function(){interface.showTypeList()});
+			  	$(".drop-down-type li").on("click", function(){interface.selectTypeList($(this))});
+			  	$("#cancel-del-dialog").on("click", function(){interface.cancelDelDialog()});
+			  	$("#delete-page").on("click", function(){postGet.deletePage($(this).attr("data-id"))});
 
 				$( ".anim-button" ).click(function() {
 					if(statusBtnFlag === false){
@@ -70,17 +60,7 @@
 						statusBtnFlag = false;
 					}
 				});
-
-			// $(".drop-down-type").bind("click", function(){
-			// 	alert("--"+$(".drop-down-type").text()); })
-
-
-
-
-
-
-		})
-
+			})
 		</script>
 	</head>
 	<body>
@@ -202,7 +182,7 @@
 				<p class="del-msg"></p>
 				<div class="del-dialog-buttons">
 					<input id="delete-page" class="delete-page" type="button" name="delete" value="Delete">
-					<input id="cancel-del-dialog" type="button" name="cancel" value="Cancel">
+					<input id="cancel-del-dialog" class="edit-page" type="button" name="cancel" value="Cancel">
 				</div>
 
 			</div>
