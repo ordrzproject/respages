@@ -1,8 +1,12 @@
+@font-face {
+	font-family: brand-font;
+	src: url(https://fonts.googleapis.com/css?family=Raleway:400,100,300,200,500,600,700);
+}
 body{
+	background-color: #ffecec;
+	font-family: barnd-font;
 	margin: 0;
  	padding: 0;
- 	background-color: #ffecec;
- 	font-family: arial, Geneva, sans-serif;
  	min-width: 600px;
  }
 ul{
@@ -22,6 +26,17 @@ a{
 	cursor: pointer;
   	cursor: hand; 
 }
+
+#user-img {
+	padding-top: 10px;
+    width: 15px;
+}
+#user-arrow{
+	padding: 10px;
+    width: 15px;
+}
+
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -42,50 +57,93 @@ a{
     height: 50px;
     position: absolute;
     width: 100%;
-
 }
 .nav{
+	background-color: #fff;
 	width: 100%;
 	height: 40px;
-	background-color: #ddd
+	
 }
 .nav-buttons li:hover{
-	background-color: #f00
+	background-color: #eee
 }
 .nav-buttons li{
+	background-color: #fff;
+	border-right: 1px solid #ddd; 
+	color: #aaa;
 	float: left;
 	padding: 10.5px;
-	background-color: #000;
-	color: #fff;
+}
+.nav-selected-button{
+	border-bottom: 2px solid #40B5E5;
 }
 .logo{    
+	border-right: 1px solid #ddd;
+    float: left;
+    height: 40px;
+    width: 260px;
+}
+.logo p{
+	color: #aaa;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+ 	text-transform: uppercase;
+    padding: 9px 9px 9px 23px;
+}
+.page p {
+    color: #4f5c7a;
+}
+.menu-img{
+	border-right: 1px solid #ddd;
 	height: 40px;
-	float:left;
+	width: 54px;
+}
+.menu-img img{
+ 	height: 20px;
+    padding: 10px 15px 17px 17px;
+    width: 20px;
 }
 .uname{
-	padding: 10px; 
+	color: #aaa;
+    font-size: 12px;
+    padding: 12px;
 }
 .pages{
 	font-size: 11px;
     padding: 20px;
 }
 .micro-page{
-	background: none repeat scroll 0 0 #fff;
+	background-color: #fff;
     border-radius: 3px;
     padding-left: 20px;
     margin-top: 10px;
     margin-left: 10px;
     position: relative;
+    width: 300px;
+    height: 280px;
+    font-size: 15px;
 }
 .micro-page .info-padding-width{
-	padding-bottom: 10px;
-    padding-left: 20px;
+	height: 1.6em;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    text-overflow: ellipsis;
     width: 150px;
 }
-.micro-page > div {
-	margin-top: 10px;
+.micro-page p {
+    color: #4f5c7a;
+    font-size: 13px;
+    text-transform: uppercase;
 }
-.edit-page {background-color: #669922; } /*3299CC*/
+.micro-page > div {
+	margin-top: 20px;
+}
+.edit-page {
+	background-color: #669922; 
+	border: 0px;
+}  
 .edit-page , .delete-page{
  	border-radius: 3px;
     color: #ddd;
@@ -100,11 +158,34 @@ a{
 	background-color: #CD3319 ;
 	width: 100px !important;
 	margin-left: 15px;
+	border: 0px;
+}
+.delete-page:hover{
+	background-color: #EE3F42;
+}
+.edit-page:hover{
+	background-color: #99CC32;
+}
+.del-page-dialog-btn{
+	margin-left: 41px;
+}
+.del-dialog-buttons{
+	margin: 0 auto;
+    position: relative;
+    top: 40px;
+    width: 320px;
+}
+.del-msg{
+	color: #888;
+	margin: 0 auto;
+    padding-top: 20px;
+    width: 230px;
 }
 .mod-buttons{
-    height: 43px;
-    padding-left: 55px;
-    width: 220px;
+   	height: 43px;
+    left: 1px;
+    padding-left: 10px;
+    width: 225px;
 }
 .view-page-msg{
  	background: none repeat scroll 0 0 #fff;
@@ -113,15 +194,18 @@ a{
     left: 10px;
     margin-left: -10px;
     position: absolute;
-    top: -10px;
+    top: -20px;
     width: 100%;
     opacity: 0.0;
 	filter: alpha(opacity=0);
-}
 
+	transition: opacity .5s ease-in-out;
+	-moz-transition: opacity .5s ease-in-out;
+	-webkit-transition: opacity .5s ease-in-out;
+}
 .view-page-msg:hover{
-	opacity: 0.4;
-	filter: alpha(opacity=40);
+	opacity: 0.9;
+	filter: alpha(opacity=90);
 }
 .view-page-msg p{
 	color: black;
@@ -130,36 +214,40 @@ a{
     position: relative;
     top: 40%;
     width: 65px;
+    color: #4f5c7a;
 
 }
 .view-selected-page{
-   background: none repeat scroll 0 0 #ccc;
-    border-radius: 15px;
-    margin: 10px auto;
+   background: none repeat scroll 0 0 #dfd0d1;
+    border-radius: 3px;
     width: 600px;
+    margin: 100px auto;
 }
 .page{
-	padding-left: 20px;
+	padding-bottom: 60px;
+    padding-left: 20px;
+    padding-top: 60px;
 }
 .page div:first-child{
 	padding-top: 50px;
 }
 .info-padding-width{
-	padding-bottom: 65px;
-    padding-left: 20px;
+	padding-bottom: 35px;
+    padding-left: 50px;
     width: 400px;
 }
 .published{
 	width: 100px;
 }
 .create-page{
-	width: 400px;
-	margin-left: -200px;
-	left: 50%;
-	top: 20%;
-	position: absolute;
 	background-color: #fff;
-	border-radius: 5px;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -230px;
+    position: fixed;
+    top: 5%;
+    width: 460px;
+    z-index: 101;
 }
 .create-page p{
    color: #888;
@@ -167,14 +255,17 @@ a{
    font-size: 14px;
 }
 .create-page-cont{
-	padding-left: 20px;
+	padding-left: 40px;
     padding-top: 1px;
 }
 .create-page-cont input, textarea{
 	border: 1px solid #ccc;
     border-radius: 3px;
     margin-bottom: 15px;
-     padding: 7px;
+    padding: 7px;
+}
+#create-page-title{
+	width: 250px;
 }
 .create-page-cont p{
 	padding-bottom: 5px;
@@ -185,56 +276,65 @@ a{
 }
 .btn-cont input{
 	margin-left: 10px;
-	background: none repeat scroll 0 0 #777;
+	background-color: #3299cc;
     border-radius: 5px;
     border-style: 0.5px solid black;
     color: #ddd;
     font-size: 15px;
     font-weight: 300;
     padding: 5px 12px 5px 10px;
+    font-weight: bold;
+}
+.btn-cont input:hover{
+	background-color: #40B5E5;
 }
 .anim-button{
-	
     border-radius: 15px;
-    height: 30px;
-    width: 100px;
+    height: 20px;
     overflow: hidden;
+    width: 80px;
 }
 .on-button{
-	background-color: #00f;
+	background-color: #669922;
     float: left;
-    height: 30px;
+    height: 20px;
     margin-left: -100px;
     position: relative;
     width: 100px;
 }
 .off-button{
-	background: none repeat scroll 0 0 red;
+	background-color: #CD3319;
 	position: relative;
 	width: 100px;
-	height: 30px;
+	height: 20px;
 }
 .on-button p{
 	color: white;
-    padding: 7px 7px 7px 20px;
+    padding: 4px 7px 7px 15px;
+}
+.on-button:hover{
+	background-color: #99CC32
 }
 .off-button p{
 	color: white;
-    padding: 7px 7px 7px 20px;
+    padding: 4px 7px 7px 30px;
+}
+.off-button:hover{
+	background-color: #EE3F42
 }
 .circle{
-  	background: none repeat scroll 0 0 black;
+  	background: black;
     border-radius: 20px;
-    height: 18px;
-    left: 10px;
+    height: 10px;
+    /*left: 10px;*/
     padding: 4px;
     position: relative;
-    top: 2px;
-    width: 18px;
+    top: 1px;
+    width: 10px;
     z-index: 1;
 }
 .head-drop-down{
-	background-color: green;
+	background-color: #669922 ;
     border-radius: 5px;
     height: 30px;
     padding: 3px 5px 5px 17px;
@@ -244,6 +344,9 @@ a{
 .head-drop-down p{
 	color: #fff;
     padding: 7px;
+}
+.head-drop-down:hover{
+	background-color: #99CC32;
 }
 .drop-down-type{
 	background-color: #ddd;
@@ -273,29 +376,34 @@ a{
 	margin-top: 15px;
 }
 #delete-dialog{
-	background-color:#ccc; 
+	background-color: #fff; 
 	border-radius: 3px;
 	width: 340px;
 	height: 160px;
 	margin-left: -170px;
 	margin-top: -80px;
-	position: absolute; 
+	position: fixed; 
 	left: 50%;
 	top: 50%;
+	z-index: 101;
 }
-#white-screen{
-	background: none repeat scroll 0 0 #fff;
+#black-screen{
+	background: none repeat scroll 0 0 #000;
     height: 100%;
     opacity: 0.90;
     filter: alpha(opacity=90);
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: 100;
 }
-#white-screen img{
+#black-screen img{
 	position: absolute;
 	top: 45%;
 	left: 50%;
 }
-
-
+.limit{
+	color: #f00 !important;
+    font-size: 10px !important;
+    position: relative;
+    top: -15px;
+}
