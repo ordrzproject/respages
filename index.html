@@ -121,9 +121,7 @@
 					<div id="view-delete" data-pid="" class='left delete-page hand' onclick='interface.deletePageBtn(this)'>Delete</div>
 				</div>
 			</div>
-
 			<div class="clear"></div>
-			
 		</div>
 		<div class="dialogs-cont">
 			<div class="none create-page">
@@ -137,11 +135,11 @@
 						<textarea id="create-page-description"rows="5" cols="30"></textarea>
 						<p class="none limit" id="desc-limit">limit 200 characters</p>
 						<p>Type</p>
-						<div class="head-drop-down">
+						<div class="head-drop-down hand">
 							<p id="selected-type-item" class=" hand left">Selecte page type</p>
 							<div class="d-arrow"></div>
 						</div>
-						<ul class="none drop-down-type">
+						<ul class="none drop-down-type hand">
 							<li data-val="0">Menu</li>
 							<li data-val="1">Events</li>
 							<li data-val="2">Content</li>
@@ -169,13 +167,18 @@
 			</div>
 			<div class="clear"></div>
 			<div class="none" id="delete-dialog">
-				<p class="del-msg"></p>
+				<p id="del-msg" class="msg"></p>
 				<div class="del-dialog-buttons">
 					<input id="delete-page" class="noselect del-page-dialog-btn delete-page" type="button" name="delete" value="Delete">
 					<input id="cancel-del-dialog" class="noselect edit-page" type="button" name="cancel" value="Cancel">
 				</div>
 			</div>
-			<div class="error-dialog"></div>
+			<div class="none error-dialog">
+				<p class="msg">Bad request! Try again.</p>
+				<div class="error-dialog-button">
+					<input id="ok-error-dialog" onclick="interface.okErrorDialogBnt()" class="noselect edit-page" type="button" name="ok" value="Ok">
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -7,7 +7,6 @@ function init(){
 	postGet.getAllPages();
 	interface.selectedButton();
 }
-
 postGet = function(){
 	return{
 		deletePage : function(id){
@@ -23,7 +22,6 @@ postGet = function(){
 		   });
 		},
 		getAllPages : function(){
-			// pagesmanagement.azurewebsites.net/Api/ResponsivePages/id
 			interface.blackScreenShow();
 			interface.showLoader();
 			interface.hideSelectedPage();
@@ -73,24 +71,26 @@ postGet = function(){
 			}
 		},
 		editPage : function(id){
-			var pageInfo = interface.getFormData();
-			pageInfo.id = id;
-			$.ajax({
-				type: "PUT",
-				dataType: 'json',
-				url: 'http://pagesmanagement.azurewebsites.net/Api/ResponsivePages/'+id,
-				data: { 
-					"id" : id,
-					"title": pageInfo.title, 
-					"description": pageInfo.description,
-					"type": pageInfo.type,
-					"isActive" : pageInfo.isActive,
-					"publishedOn" : "2015-11-18T10:25:00.5772396+00:00" 
-				},
-				complete: function (data) {
-					callBacks.editPage(data, pageInfo);
-				}
-			});
+			if(validation.createPageValidation()){
+				var pageInfo = interface.getFormData();
+				pageInfo.id = id;
+				$.ajax({
+					type: "PUT",
+					dataType: 'json',
+					url: 'http://pagesmanagement.azurewebsites.net/Api/ResponsivePages/'+id,
+					data: { 
+						"id" : id,
+						"title": pageInfo.title, 
+						"description": pageInfo.description,
+						"type": pageInfo.type,
+						"isActive" : pageInfo.isActive,
+						"publishedOn" : "2015-11-18T10:25:00.5772396+00:00" 
+					},
+					complete: function (data) {
+						callBacks.editPage(data, pageInfo);
+					}
+				});
+			}
 		}
 	}
 }();
@@ -99,6 +99,7 @@ callBacks = function(){
 	return{
 		editPage : function(data, pageInfo){
 			var json = $.parseJSON(JSON.stringify(data));
+			interface.closeCreatePage();
 			if(callBacks.checkResponse(json) === 1 ){
 				interface.updateMicroPage(pageInfo);
 			}
@@ -120,7 +121,6 @@ callBacks = function(){
 			var json = $.parseJSON(JSON.stringify(data));
 			var responseJSON;
 			if(this.checkResponse(json) === 1 ){
-				// responseJSON = json.responseJSON;
 				var resLength = json.responseJSON.length;
 				$(".pages").empty();
 				for(var i = 0; i < resLength; i++){
@@ -159,7 +159,7 @@ callBacks = function(){
 				return 1;
 			}
 			else{
-				alert("error");
+				interface.showErrorDialog();
 				return 0;
 			}
 		}
@@ -173,7 +173,6 @@ interface = function(){
 			$(".create-page").fadeIn();
 			this.resetFields();
 			$("#submit-create-page").attr("onclick","postGet.createPage( interface.getFormData())");
-			// return;
 		},
 		closeCreatePage : function(){
 			$(".create-page").fadeOut();
@@ -194,27 +193,21 @@ interface = function(){
 			$(".on-button").attr("style","");
 			$(".off-button").attr("style","");
 		},
-		// submitCreatePage : function(){
-
-		// },
 		showTypeList : function(){
 			if($(".drop-down-type").is(":visible"))
-				$(".drop-down-type").toggle(400);
+				$(".drop-down-type").slideUp();
 			else
-				$(".drop-down-type").fadeIn();
-				
+				$(".drop-down-type").slideDown();
 		},
 		hideTypeList : function(){
 			$(".drop-down-type").css("display","none");
 		},
 		selectTypeList : function(element){
-			// alert(this.text());
 			$("#selected-type-item").text(element.text());
 			$("#selected-type-item").attr("data-tid",element.attr("data-val"));
 			this.showTypeList();
 		},
 		deletePageBtn : function(e){
-			// alert($(e).attr("data-pid"));
 			$("#delete-page").attr("data-id","");
 			$("#delete-page").attr("data-id", $(e).attr("data-pid"));
 			this.showDeleteDialog();
@@ -258,7 +251,7 @@ interface = function(){
 			else{
 				this.blackScreenShow();
 				$("#delete-dialog").fadeIn();
-				$(".del-msg").text("Are you sure you want to delete this page?");	
+				$("#del-msg").text("Are you sure you want to delete this page?");	
 			}
 		},
 		cancelDelDialog :function(){
@@ -319,6 +312,17 @@ interface = function(){
 		},
 		deselectedButton : function(){
 			$("#btn-view-pages").removeClass("nav-selected-button");
+		},
+		showErrorDialog : function(){
+			this.blackScreenShow();
+			$(".error-dialog").fadeIn();
+		},
+		hideErrorDialog : function(){
+			this.blackScreenHide();
+			$(".error-dialog").fadeOut();
+		},
+		okErrorDialogBnt :function(){
+			this.hideErrorDialog();
 		}
 	}
 }();
@@ -333,15 +337,15 @@ validation = function(){
 			pageVal.push(this.emptyField( desc )) ;
 			if( $("#selected-type-item").attr("data-tid").length > 0 ) {
 				$(".head-drop-down").removeClass("red-border");
-				pageVal.push(1);
 			}
 			else{
 				$(".head-drop-down").addClass("red-border");
-				// pageVal.push(0);
+				pageVal.push(0);
 			}
 			if(!this.limit(title, 50)){
 				$("#title-limit").removeClass("none");
-				pageVal.push(1);
+				title.addClass("red-border");
+				pageVal.push(0);
 			}
 			else{
 				$("#title-limit").addClass("none");
@@ -349,7 +353,8 @@ validation = function(){
 
 			if(!this.limit(desc, 200)){
 				$("#desc-limit").removeClass("none");
-				pageVal.push(1);
+				desc.addClass("red-border");
+				pageVal.push(0);
 			}
 			else{
 				$("#desc-limit").addClass("none");
@@ -382,8 +387,6 @@ validation = function(){
 		}
 	}
 }();
-
-
 
 function pageHtml(obj){ 			
    return 	"<div class='left'>"+
@@ -422,12 +425,3 @@ function pageHtml(obj){
 				"</div>"+
 			"</div>"
 }
-
-
-
-
-
-
-
-
-

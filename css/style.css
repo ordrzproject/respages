@@ -175,7 +175,7 @@ a{
     top: 40px;
     width: 320px;
 }
-.del-msg{
+.msg{
 	color: #888;
 	margin: 0 auto;
     padding-top: 20px;
@@ -354,10 +354,12 @@ a{
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.255);
     margin-bottom: 15px;
     width: 150px;
-
 }
 .drop-down-type li{
-	 padding: 12px;
+	padding: 12px;
+}
+.drop-down-type li:hover{
+	background-color: #ccc;
 }
 .d-arrow{
 	border-left: 4px solid transparent;
@@ -375,7 +377,7 @@ a{
 .status_cont{
 	margin-top: 15px;
 }
-#delete-dialog{
+#delete-dialog , .error-dialog{
 	background-color: #fff; 
 	border-radius: 3px;
 	width: 340px;
@@ -386,6 +388,12 @@ a{
 	left: 50%;
 	top: 50%;
 	z-index: 101;
+}
+.error-dialog-button{
+	margin: 0 auto;
+    position: relative;
+    top: 60px;
+    width: 90px;
 }
 #black-screen{
 	background: none repeat scroll 0 0 #000;
