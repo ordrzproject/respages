@@ -56,14 +56,10 @@ postGet = function(){
 		},
 		createPage : function(pageInfo){
 			if(validation.createPageValidation()){
+				pageInfo.id = 1;
+				pageInfo.publishedOn = "2015-11-18T10:25:00.5772396+00:00" ;
 				$.post('http://pagesmanagement.azurewebsites.net/Api/ResponsivePages',
-					{ "id" : 1,
-						"title": pageInfo.title, 
-						"description": pageInfo.description,
-						"type": pageInfo.type,
-						"isActive" : pageInfo.isActive,
-						"publishedOn" : "2015-11-18T10:25:00.5772396+00:00" 
-					},
+					pageInfo,
 					function (data) {
 						callBacks.createPageCB(data);
 		       		}
@@ -74,18 +70,12 @@ postGet = function(){
 			if(validation.createPageValidation()){
 				var pageInfo = interface.getFormData();
 				pageInfo.id = id;
+				pageInfo.publishedOn = "2015-11-18T10:25:00.5772396+00:00" ;
 				$.ajax({
 					type: "PUT",
 					dataType: 'json',
 					url: 'http://pagesmanagement.azurewebsites.net/Api/ResponsivePages/'+id,
-					data: { 
-						"id" : id,
-						"title": pageInfo.title, 
-						"description": pageInfo.description,
-						"type": pageInfo.type,
-						"isActive" : pageInfo.isActive,
-						"publishedOn" : "2015-11-18T10:25:00.5772396+00:00" 
-					},
+					data: pageInfo,
 					complete: function (data) {
 						callBacks.editPage(data, pageInfo);
 					}
