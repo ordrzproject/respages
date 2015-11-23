@@ -1,0 +1,41 @@
+<div id="pages" ng-controller='pageViewCtrl'>
+	<div class='left' ng-click="go(data.id)" ng-repeat='data in datas'>
+		<div id='pg-{{data.id}}'class='left micro-page'>
+		<div onclick='' class='view-page-msg hand'>
+			<p>View</p>
+		</div>
+		<div>
+		 	<p class='left'>Title:</p>
+		 	<div class='right info-padding-width' id='title-{{data.id}}'>{{data.title}}</div>
+		</div>
+		<div class='clear'></div>
+		<div>
+		 	<p class='left'>Description:</p>
+		 	<div class='right info-padding-width' id='desc-{{data.id}}'>{{data.description}}</div>
+		</div>
+		<div class='clear'></div>
+		<div>
+		 	<p class='left'>Type:</p>
+		 	<div class='right info-padding-width' id='type-{{data.id}}' data-tid='{{data.type}}'>{{data.type}}</div>
+		</div>
+		<div class='clear'></div>
+	 	<div>
+		 	<p class='left'>Status:</p>
+		 	<div class='right info-padding-width' id='status-{{data.id}}'>{{data.isActive}}</div>
+		</div>
+		<div class='clear'></div>
+		<div>
+			<p class='left published'>PublishedOn:</p>
+		 	<div class='right info-padding-width' id='published-{{data.id}}'>{{data.publishedOn}}</div>
+		</div>
+		</div> 
+		<div class='mod-buttons'>
+			<button data-pid='{{data.id}}' class="left view-buttons btn btn-primary" type="button">Edit</button>
+			<button data-pid='{{data.id}}' class="left view-buttons btn btn-danger" type="button">Delete</button>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+
+

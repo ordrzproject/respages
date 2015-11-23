@@ -1,0 +1,48 @@
+<div  class="create-page" style="width: 500px; margin:0 auto" ng-click="formClick()" >
+	<form>
+		<div class="form-group"> 
+			<label for="f-title">Title</label>
+			<input type="text" class="form-control" id="f-title" placeholder="Title">
+		</div>
+		<div class="form-group"> 
+			<label for="f-desc">Description</label>
+			<textarea style="max-width:100%;" id="f-desc" rows="5" placeholder="Description" class="form-control"> </textarea>
+		</div>
+		<div class="form-group"> 
+			<label for="f-type">Type</label>
+		  	<div  ng-click="animate()" class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">{{type}}
+			    <span class="caret"></span></button>
+			    <ul id="dropdown-type" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			     	<li ng-click="sType('0')" role="menuitem"><a>Menu</a></li>
+			        <li ng-click="sType('1')" role="menuitem"><a>Events</a></li>
+			        <li ng-click="sType('2')" role="menuitem"><a>Content</a></li>
+			    </ul>
+			</div>
+		</div>
+	<!-- 	<div class="form-group"> 
+			<label for="f-status">Type</label>
+			<div class="switch">
+			  	<input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+			  	<label for="cmn-toggle-1"></label>
+			</div>
+		</div> -->
+		<!-- <div class="form-group">  -->
+			
+		<!-- </div> -->
+		<div class="form-group"> 
+			<label>Status</label></br>
+			<label for="f-status" class="switch" > 
+		     	<input type="checkbox" checked="" ng-model="checkboxModel.val" class="switch-input" id="f-status" ng-click="check()">
+				<span data-off="Off" data-on="On" class="switch-label off"></span>
+				<span class="switch-handle"></span>
+		    </label>
+	    </div>
+	    <div class="right form-group"> 
+			 <button type="button" ng-click="" class="btn btn-primary">Submit</button>
+			 <button type="button" ng-click="closeForm()" class="btn btn-primary">Close</button>
+		</div>
+
+	</form>
+	<div class="clear"></div>
+</div>
