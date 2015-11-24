@@ -1,35 +1,35 @@
-<div class="left page">
-<div>
- 	<p class="left">TITLE:</p>
- 	<div id="view-title" class="right info-padding-width"> {{data.title}}</div>
-</div>
-<div class="clear"></div>
-<div>
- 	<p class="left">DESCRIPTION:</p>
- 	<div id="view-desc" class="right info-padding-width" > {{data.desc}}</div>
-</div>
-<div class="clear"></div>
-<div>
- 	<p class="left">TYPE:</p>
- 	<div id="view-type" class="right info-padding-width">{{data.type}} </div>
-</div>
-<div class="clear"></div>
+<div class="view-selected-page">
+	<div class="left page">
 	<div>
- 	<p class="left">STATUS:</p>
- 	<div id="view-status" class="right info-padding-width"> {{data.isActive}}</div>
- </div>
- <div class="clear"></div>
-  <div>
- 	<p class="left published">PUBLISHEDON:</p>
- 	<div id="view-published" class="right info-padding-width">{{data.publishedOn}}</div>
- </div>
- <div class="clear"></div>
-</div>
+	 	<p class="left">TITLE:</p>
+	 	<div id="view-title" class="right info-padding-width"> {{data.title}}</div>
+	</div>
 	<div class="clear"></div>
-	<div class='mod-buttons'>
-	<div id="view-edit" data-pid="" class='left edit-page hand' onclick='interface.editPageBtn(this)'>Edit</div>
-	<div id="view-delete" data-pid="" class='left delete-page hand' onclick='interface.deletePageBtn(this)'>Delete</div>
+	<div>
+	 	<p class="left">DESCRIPTION:</p>
+	 	<div id="view-desc" class="right info-padding-width" > {{data.description}}</div>
+	</div>
+	<div class="clear"></div>
+	<div>
+	 	<p class="left">TYPE:</p>
+	 	<div id="view-type" class="right info-padding-width">{{data.type}} </div>
+	</div>
+	<div class="clear"></div>
+		<div>
+	 	<p class="left">STATUS:</p>
+	 	<div id="view-status" class="right info-padding-width"> {{data.isActive}}</div>
+	 </div>
+	 <div class="clear"></div>
+	  <div>
+	 	<p class="left published">PUBLISHEDON:</p>
+	 	<div id="view-published" class="right info-padding-width">{{data.publishedOn}}</div>
+	 </div>
+	 <div class="clear"></div>
+	</div>
+		<div class='mod-buttons'>
+			<button ng-click="goEditPage(data.id)" class="left view-buttons btn btn-primary" type="button">Edit</button>
+			<button ng-click="" class="left view-buttons btn btn-danger" type="button">Delete</button>
+		</div>		 
+	<div class="clear"></div>
 </div>
-<div class="clear"></div>
-
 

@@ -6,13 +6,29 @@
 		<img src="images/menu.png" class="left" alt="menu">
 	</div>
 	<ul class="nav-buttons noselect hand">
-		<li id="btn-view-pages" ng-click="go()">
+		<li id="btn-view-pages" ng-click="goToPages()">
 			<a href="#/pages">View All Pages</a>
 		</li>
 		<li id="btn-create-page" ng-click="gotToCreatePage()">
 			<a href="#/create-page">Create Page</a>
 		</li>
 	</ul>
+
+	<!-- <div class="form-group">
+		<input type="text" class="form-control" id="search" ng-model="query" ng-trim="false">
+	</div> -->
+
+
+	<div class="left col-lg-3" ng-hide="searchCont">
+    	<div class="input-group">
+			<input type="text" class="form-control" id="search" ng-model="query" ng-trim="false" placeholder="Search...">
+   	 	</div> 
+	</div>
+
+
+
+
+
 	<div class="right user">
 		<p class="left uname">Jimis</p>
 		<img id="user-img" class="left" src="images/user.png" alt="user">

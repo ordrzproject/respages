@@ -7,7 +7,7 @@ body{
     font-family: barnd-font;
     margin: 0;
     padding: 0;
-    min-width: 600px;
+    min-width: 830px;
  }
  .dropdown{width:100px !important;}
 .clear{clear: both;}
@@ -21,10 +21,56 @@ body{
     -ms-user-select: none;
     user-select: none;
 }
+#black-screen{
+    background: none repeat scroll 0 0 #000;
+    height: 100%;
+    opacity: 0.90;
+    filter: alpha(opacity=90);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+.dialog{
+    background-color: #fff; 
+    border-radius: 3px;
+    width: 340px;
+    height: 160px;
+    margin-left: -170px;
+    margin-top: -80px;
+    position: fixed; 
+    left: 50%;
+    top: 50%;
+    z-index: 101;
+}
+.del-dialog-buttons{
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+    width: 320px;
+}
+.msg{
+    color: #888;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 15px;
+}
 .hand{
     cursor: pointer;
     cursor: hand; 
 }
+.page{
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-top: 60px;
+}
+.page div:first-child{
+    padding-top: 50px;
+}
+.page p {
+    color: #4f5c7a;
+}
+
 #pages {
     font-size: 11px;
     padding: 20px;
@@ -41,7 +87,20 @@ body{
     background-color: #fff;
     width: 100%;
     height: 40px;
-    
+}
+#search{
+    margin-left: 10px; 
+    height: 42px;
+    margin-left: -16px;
+    margin-top: -11px;
+}
+.input-group{
+    width: 100% !important
+}
+.loader{
+    position: fixed;
+    top: 50%;
+    left: 50%;
 }
 .create-page {
     background-color: #fff;
@@ -55,7 +114,7 @@ body{
 }
 .nav-buttons li{
     background-color: #fff;
-    border-right: 1px solid #ddd; 
+    border-right: 1px solid #ccc; 
     list-style: outside none none !important;
     float: left;
     font-size: 16px;
@@ -66,16 +125,13 @@ body{
     text-decoration: none !important;
     color: #aaa !important;
 }
-.nav-selected-button{
-    border-bottom: 2px solid #40B5E5;
-}
 .uname{
     color: #aaa;
     font-size: 12px;
     padding-right: 10px;
 }
 .logo{    
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #ccc;
     float: left;
     height: 40px;
     width: 260px;
@@ -89,7 +145,7 @@ body{
     padding: 9px 9px 9px 23px;
 }
 .menu-img{
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #ccc;
     height: 40px;
     width: 54px;
 }
@@ -99,7 +155,12 @@ body{
     padding: 10px 15px 17px 17px;
     width: 20px;
 }
-
+.view-selected-page{
+   background: none repeat scroll 0 0 #dfd0d1;
+    border-radius: 3px;
+    width: 600px;
+    margin: 100px auto;
+}
 .micro-page{
 	background-color: #fff;
     border-radius: 3px;
@@ -127,6 +188,11 @@ body{
 }
 .micro-page > div {
 	margin-top: 20px;
+}
+.info-padding-width{
+    padding-bottom: 35px;
+    padding-left: 50px;
+    width: 400px;
 }
 .edit-page {
     background-color: #669922; 
