@@ -240,20 +240,4 @@ controllers.controller("loadingCtrl", function($scope, loader){
 	$scope.$watch(function(){return loader.getLoaderFlag();},function(newVal, oldVal){  
 		if(newVal!=oldVal) $scope.loading = newVal;
 	});
-})
-
-
-
-;
-
-
- 	
-		
-
-
-
-
-
-
-			
- 
+});
