@@ -28,8 +28,13 @@
 	</script>
 </head>
 <body ng-app="respages">
-	<div class="header" ng-include="'views/header.html'"></div>
+	<div id="black-screen" ng-hide="bScreen" ng-controller="blackScreen"></div>
+	<div ng-include="'views/header.html'" class="header" ></div>
+	<div ng-include="'views/dialog.html'"></div>
+
+	<img class="loader" ng-hide="loading" src="images/loader.gif" ng-controller="loadingCtrl">
 	<!-- <a href="#/pages">test</a> -->
+
 	<div ng-view></div>
 	<!-- <div ng-controller='full-page-ctrl'>
 		<div class="none view-selected-page" ng-include="'views/view_full_page.html'"></div>

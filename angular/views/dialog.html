@@ -1,0 +1,8 @@
+<div  class="dialog" id="dialog" ng-hide="dialogVisibility" ng-controller="dialogCtrl">
+	<p id="msg" class="msg">{{msg}}</p>
+	<div class="del-dialog-buttons">
+		
+		<button ng-click="leftBtnClick()" class="left view-buttons btn btn-danger"  ng-hide='leftDialogVsb' type="button">{{leftDgButton}}</button>
+		<button ng-click="rightBtnClick()" class="left view-buttons btn btn-primary" ng-hide="rightDialogVsb" type="button">{{rightDgButton}}</button>
+	</div>
+</div>
