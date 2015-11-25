@@ -47,18 +47,20 @@ controllers.controller('fullPageCtrl', function($scope, $filter, $routeParams, $
 		$scope.fillData();
 	}
 	$scope.fillData = function(){
-		$scope.data = $filter('filter')(dataArray, function(value, index) {return index == ($scope.index);})[0];
+		var tmp = $filter('filter')(dataArray, function(value, index) {return index == ($scope.index);})[0];
+		tmp.type = types[tmp.type];
+		$scope.data = tmp;
 	}
 })
-controllers.controller('pageViewCtrl', function($scope, $location, $filter, respApiservice, myService, searchData,showHideSearch, showHideLoaderBlScreen, deletePage, successDelete, dataObj){
+controllers.controller('pageViewCtrl', function($scope, $location, $filter, respApiservice, myService, searchData,showHideSearch, showHideLoaderBlScreen, deletePage, successDelete, dataObj,types){
 	showHideLoaderBlScreen.show();
 	respApiservice.getAllPages().then(function(response) {
-		// alert(angular.toJson( response.data)+"  "+response.type);
-		
 		if(response.status === 200 && response.statusText === "OK"){
-			// $scope.datas.type = typeArray[response.data.type];
 			showHideLoaderBlScreen.hide();
 	 		$scope.datas = response.data;
+	 		angular.forEach($scope.datas, function(value, index) {
+		        $scope.datas[index].type = types[$scope.datas[index].type];
+		    });
 	 		dataObj.setData($scope.datas);
 		}
 	},function(data){
