@@ -104,9 +104,7 @@ services.factory('myService', ['types', function(types){
 	}
 }]);
 services.factory('searchData', function(){
-
 	var data = { search: '' };
-
     return {
         getSearch: function () {
             return data.search;
@@ -267,4 +265,3 @@ services.factory('deletePage',['showHideDialog','showHideBlScreen', 'dialogWindo
 		}
 	}
 }]);
-

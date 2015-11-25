@@ -1,10 +1,8 @@
 var animation =  function(id){
-	// var visibleStatus = 0; //invisible 
 	var e = document.getElementById(id);
 	var time = 10;
 	var pixels = 10;
 	return{
-
 		slideUp : function(){
         	var height = e.offsetHeight;
     		this.move(e,1,time);
@@ -70,4 +68,4 @@ var animation =  function(id){
         	return 0;
         },
 	}
-}//()
+}
