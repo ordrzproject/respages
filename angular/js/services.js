@@ -33,11 +33,56 @@ services.factory('respApiservice', function($http){
 			url: 'http://pagesmanagement.azurewebsites.net/Api/ResponsivePages'
 		});
 	}
-
 	return resApi;
 });
-services.factory('myService', function(){
-	// this.data = [];
+services.factory('types', function(){
+	return  ["Menu","Events","Content"] ;
+});
+services.factory('texts',function(){
+	return{
+		requestError  : "Bad request! Try again.",
+		deleteBnt	  : "Delete",
+		editButton	  : "Edit",
+		deleteQuest   : "Are you sure you want to delete this page?",
+		cancel		  : "Cancel",
+		ok 			  : "OK",
+		typeDropDown  : "Select type",
+		submit		  : "Submit",
+		createPage	  : "Create Page",
+		update		  : "Update",
+		editPage	  : "Edit page",
+		appName       : "Admin App",
+		userName      : "Jimis",
+		viewPagesBtn  : "View All Pages ",
+		createPageBtn : "Create Page"
+	}
+})
+services.factory('dataObj', function(){
+	var data = [];
+	return {
+		setData : function(dt){
+			data = dt;
+		},
+		getData : function(){
+			return data;
+		}
+	}
+});
+services.factory('SuccessAlert',function(){
+	var flag = true;
+	return{
+		show : function(){
+			flag = false;
+		},
+		hide : function(){
+			flag = true;
+		},
+		getFlag : function(){
+			return flag;
+		}
+	}
+})
+services.factory('myService', ['types', function(types){
 	return{
 		animate : function(scope, id){
 			scope.typeDropDown = animation(id);
@@ -50,14 +95,14 @@ services.factory('myService', function(){
 		},
 		sType : function(scope,typeId, perentId){
 			scope.typeId = typeId;
-			scope.type = typeArray[typeId];
+			scope.type = types[typeId];
 			scope.typeDropDown.slideUp(perentId);
 		},
 		closeForm : function(location){
 			location.path('/pages');	
 		} 
 	}
-});
+}]);
 services.factory('searchData', function(){
 
 	var data = { search: '' };
@@ -139,7 +184,6 @@ services.factory('showHideDialogAndBlScreen', ['showHideDialog','showHideBlScree
 			showHideBlScreen.setBlScreenFlag(false);
 		}
 	}
-	
 }]);
 services.factory('deleteId',function(){
 	var deleteId;
@@ -161,36 +205,66 @@ services.factory('loader',function(){
 		getLoaderFlag : function(){
 			return loaderFlag;
 		}
-
 	}
 });
-services.factory('deleteRequest', ['respApiservice','showHideDialogAndBlScreen','deleteId','dialogWindowMode', function(respApiservice, showHideDialogAndBlScreen, deleteId, dialogWindowMode){
-	// var data = {response: 0, error : 0};
-	// respApiservice.deletePage(deleteId.getDeleteId).then(function(response){
+services.factory('showHideLoaderBlScreen',['showHideBlScreen','loader',function(showHideBlScreen,loader){
 	return {
-		delete : function(){
-			showHideDialogAndBlScreen.hide();
-			respApiservice.deletePage(deleteId.getDeleteId()).then(function(response) {
-
-			if(response.status === 200 && response.statusText === "OK"){
-		 		 alert("del - success");
-			} 
-			},function(data){
-				dialogWindowMode.setDgMode(0);
-				showHideDialogAndBlScreen.show();
-			})
-			
-
-			// return data;
+		show : function(){  
+			showHideBlScreen.setBlScreenFlag(false);
+			loader.setLoaderFlag(false);
+		},
+		hide : function(){
+			showHideBlScreen.setBlScreenFlag(true);
+			loader.setLoaderFlag(true);
 		}
 	}
 }]);
-
-
-
-
-
-
-
-
+services.factory('errorDialog',['dialogWindowMode','showHideDialogAndBlScreen',function(dialogWindowMode,showHideDialogAndBlScreen){
+	return{
+		show : function(){
+			dialogWindowMode.setDgMode(0);
+			showHideDialogAndBlScreen.show();
+		}
+	}
+}]);
+services.factory('successDelete',function(){
+	var successDel = false;
+	return {
+		setSuccessDel : function(flg){
+			successDel = flg;
+		},
+		getSuccessDel : function(){
+			return successDel;
+		},
+	}
+});
+services.factory('deleteRequest', [ '$location','respApiservice','showHideDialogAndBlScreen','deleteId','dialogWindowMode','successDelete','SuccessAlert', 
+	function( $location,respApiservice, showHideDialogAndBlScreen, deleteId, dialogWindowMode,successDelete,SuccessAlert){
+	return {
+		delete : function(){
+			showHideDialogAndBlScreen.hide();
+		 	$location.path( "/pages" );
+			respApiservice.deletePage(deleteId.getDeleteId()).then(function(response) {
+			if(response.status === 200 && response.statusText === "OK"){
+		 		successDelete.setSuccessDel(true);
+		 		SuccessAlert.show();
+			} 
+			},function(data){
+				errorDialog.show();
+			})
+			successDelete.setSuccessDel(false);
+		}
+	}
+}]);
+services.factory('deletePage',['showHideDialog','showHideBlScreen', 'dialogWindowMode', 'deleteId', 'showHideDgLeftBtn', function(showHideDialog,showHideBlScreen, dialogWindowMode, deleteId, showHideDgLeftBtn){
+	return{
+		show : function(id){
+			showHideDialog.setDialogFlag(false);
+			showHideBlScreen.setBlScreenFlag(false)
+			dialogWindowMode.setDgMode(1);
+			deleteId.setDeleteId(id);
+			showHideDgLeftBtn.setDgLeftBtn(false);
+		}
+	}
+}]);
 

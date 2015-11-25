@@ -1,36 +1,25 @@
 <div class="nav" ng-controller='headerCtrl'>
 	<div class="logo left" >
-		<p class="noselect">Admin App</p>
+		<p class="noselect">{{appName}}</p>
 	</div>
 	<div class="left menu-img">
 		<img src="images/menu.png" class="left" alt="menu">
 	</div>
 	<ul class="nav-buttons noselect hand">
 		<li id="btn-view-pages" ng-click="goToPages()">
-			<a href="#/pages">View All Pages</a>
+			<a href="#/pages">{{viewPagesBtn}}</a>
 		</li>
 		<li id="btn-create-page" ng-click="gotToCreatePage()">
-			<a href="#/create-page">Create Page</a>
+			<a href="#/create-page">{{createPageBtn}}</a>
 		</li>
 	</ul>
-
-	<!-- <div class="form-group">
-		<input type="text" class="form-control" id="search" ng-model="query" ng-trim="false">
-	</div> -->
-
-
 	<div class="left col-lg-3" ng-hide="searchCont">
     	<div class="input-group">
 			<input type="text" class="form-control" id="search" ng-model="query" ng-trim="false" placeholder="Search...">
    	 	</div> 
 	</div>
-
-
-
-
-
 	<div class="right user">
-		<p class="left uname">Jimis</p>
+		<p class="left uname">{{userName}}</p>
 		<img id="user-img" class="left" src="images/user.png" alt="user">
 		<img id="user-arrow"class="left" src="images/d_arrow.png" alt="d_arrow">
 	</div>

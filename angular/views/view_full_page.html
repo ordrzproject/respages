@@ -1,5 +1,10 @@
 <div class="view-selected-page">
 	<div class="left page">
+		<div class="right back-forw-cont" ng-hide="hidePreNextBtn">
+			<img class="left-arrow hand" ng-click="prev()" src="images/d_arrow.png" alt="left">
+			<img class="right-arrow hand" ng-click="next()" src="images/d_arrow.png" alt="right">
+		</div>
+		<div class="clear"></div>
 	<div>
 	 	<p class="left">TITLE:</p>
 	 	<div id="view-title" class="right info-padding-width"> {{data.title}}</div>
@@ -28,7 +33,7 @@
 	</div>
 		<div class='mod-buttons'>
 			<button ng-click="goEditPage(data.id)" class="left view-buttons btn btn-primary" type="button">Edit</button>
-			<button ng-click="" class="left view-buttons btn btn-danger" type="button">Delete</button>
+			<button ng-click="deletePage(data.id)" class="left view-buttons btn btn-danger" type="button">Delete</button>
 		</div>		 
 	<div class="clear"></div>
 </div>

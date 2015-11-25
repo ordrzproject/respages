@@ -42,7 +42,6 @@ var animation =  function(id){
 	    				elementStyle.overflow = "";
         				clearInterval(loop);
         			}
-        			
 				}
         		
     		}, time);
