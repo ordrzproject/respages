@@ -259,7 +259,6 @@ controllers.controller("loadingCtrl", function($scope, loader){
 		if(newVal!=oldVal) $scope.loading = newVal;
 	});
 });
-<<<<<<< HEAD
 controllers.controller("alertController", function($scope,SuccessAlert, $timeout){	
 	$scope.vAlert = true;
 	$scope.$watch(function(){return SuccessAlert.getFlag();}, function(newVal,oldVal){
@@ -277,5 +276,3 @@ controllers.controller("alertController", function($scope,SuccessAlert, $timeout
 		}
 	})
 })
-=======
->>>>>>> origin/master
