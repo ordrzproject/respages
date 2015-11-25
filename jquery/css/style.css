@@ -50,14 +50,6 @@ a{
 .left{float: left;}
 .right{float: right;}
 .none{display: none}
-.header{}
-.footer{
-	background-color: #ddd;
-    bottom: 0;
-    height: 50px;
-    position: absolute;
-    width: 100%;
-}
 .nav{
 	background-color: #fff;
 	width: 100%;
@@ -198,7 +190,6 @@ a{
     width: 100%;
     opacity: 0.0;
 	filter: alpha(opacity=0);
-
 	transition: opacity .5s ease-in-out;
 	-moz-transition: opacity .5s ease-in-out;
 	-webkit-transition: opacity .5s ease-in-out;
